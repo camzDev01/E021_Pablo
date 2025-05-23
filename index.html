@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marimba Chapina - Sonidos de Guatemala</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos CSS */
+        :root {
+            --primary-color: #A0522D; /* Tono terroso/madera */
+            --secondary-color: #D4AF37; /* Dorado/bronce */
+            --accent-color: #8B0000; /* Rojo vibrante */
+            --text-color: #333;
+            --light-bg: #F5F5DC; /* Crema */
+            --dark-bg: #2C3E50; /* Azul oscuro */
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1em 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 5px 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+
+        .hero {
+            background-image: url("banner.jpg");
+            position: relative;
+            height: 60vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            filter: brightness(0.7); /* Oscurecer la imagen para que el texto resalte */
+        }
+
+        .hero-content {
+            z-index: 1;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+        }
+
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-top: 0;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #B22222;
+        }
+
+        section {
+            padding: 40px 20px;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        section h2 {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            font-size: 2.2em;
+        }
+
+        #nosotros, #servicios, #galeria, #repertorio, #clientes, #contacto {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .about-content, .service-grid, .gallery-grid, .repertoire-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .about-content img {
+            max-width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            object-fit: cover;
+            height: 300px; /* Altura fija para consistencia */
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .service-item, .repertoire-item {
+            background-color: var(--light-bg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            flex: 1 1 300px; /* Flexbox para items */
+            box-sizing: border-box;
+        }
+
+        .service-item img {
+            max-width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img, .gallery-item iframe {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            height: 250px; /* Altura uniforme para la galería */
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .testimonial-item {
+            background-color: var(--light-bg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-item p {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-item .author {
+            font-weight: 700;
+            text-align: right;
+            color: var(--primary-color);
+        }
+
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .contact-info, .contact-form-container {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-form-container form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 20px;
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .contact-form-container label {
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .contact-form-container input,
+        .contact-form-container select,
+        .contact-form-container textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box; /* Asegura que el padding no aumente el ancho */
+        }
+
+        .contact-form-container textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .contact-form-container button {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form-container button:hover {
+            background-color: #B22222;
+        }
+
+        .social-links a {
+            color: var(--primary-color);
+            font-size: 2em;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        footer {
+            background-color: var(--dark-bg);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+
+        footer .external-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        footer .external-links a:hover {
+            color: white;
+        }
+
+        /* Media Queries para Responsividad */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding-top: 10px;
+            }
+
+            nav ul li {
+                margin: 5px 0;
+            }
+
+            .hero h2 {
+                font-size: 2.5em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+
+            .about-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-content img {
+                width: 100%;
+                max-width: 400px; /* Limitar el ancho en móviles también */
+            }
+
+            .service-item, .repertoire-item {
+                flex: 1 1 100%;
+            }
+
+            .contact-info, .contact-form-container {
+                min-width: unset; /* Reset min-width para móviles */
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Marimba Ritmo Chapín</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#repertorio">Repertorio</a></li>
+                <li><a href="#clientes">Clientes</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <img src="https://via.placeholder.com/1920x600/A0522D/FFFFFF?text=Marimba+Chapina+en+Accion" alt="Marimba Chapina en Acción">
+            <div class="hero-content">
+                <h2>Sonidos del Alma de Guatemala</h2>
+                <p>Donde la cultura y la tradición cobran vida en cada melodía.</p>
+                <a href="#contacto" class="button">¡Contrátanos para tu Evento!</a>
+            </div>
+        </section>
+
+        <section id="nosotros">
+            <h2>Nuestra Historia y Pasión</h2>
+            <div class="about-content">
+                <img src="img5.jpg" alt="Equipo de Marimba Ritmo Chapín">
+                <div class="about-text">
+                    <p>Somos **Marimba Ritmo Chapín**, una agrupación dedicada a la difusión y preservación de la música de marimba guatemalteca. Fundada en **[Año de Fundación, ej: 1985]** por **[Nombre de Fundador/es, ej: Don Carlos y sus Hijos]**, hemos llevado la alegría y el ritmo de Guatemala a innumerables eventos por más de **[Número]** décadas.</p>
+                    <p>Actualmente, nuestro grupo está conformado por **[Número de integrantes, ej: 7 talentosos músicos]** que comparten una profunda pasión por la marimba y un compromiso con la excelencia musical. Nuestra misión es crear experiencias inolvidables, adaptando la riqueza de nuestro repertorio a cada ocasión especial, desde bodas elegantes hasta vibrantes fiestas corporativas.</p>
+                    <p>Cada nota que interpretamos es un homenaje a nuestras raíces y una invitación a celebrar la cultura de nuestra tierra.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios">
+            <h2>Nuestros Servicios Musicales</h2>
+            <div class="service-grid">
+                <div class="service-item">
+                    <img src="https://via.placeholder.com/400x200/D4AF37/333333?text=Marimba+en+Bodas" alt="Marimba para Bodas">
+                    <h3>Bodas Inolvidables</h3>
+                    <p>Acompañamos tu día especial con melodías que evocan amor y elegancia. Desde la ceremonia hasta la recepción, creamos el ambiente perfecto.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Eventos Corporativos</h3>
+                    <p>Añade un toque distintivo y cultural a tus reuniones de negocios, conferencias o celebraciones empresariales. Profesionalismo y distinción garantizados.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Fiestas Privadas y Sociales</h3>
+                    <p>Llena de alegría y ritmo tus celebraciones familiares, cumpleaños, aniversarios y reuniones con amigos. La marimba que hará bailar a todos.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Celebraciones Culturales</h3>
+                    <p>Orgullosos de representar nuestra cultura, ofrecemos presentaciones para eventos patrios, festivales y homenajes a la tradición guatemalteca.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="galeria">
+            <h2>Nuestros Momentos Musicales</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="img1.jpg"Presentación en Vivo 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="img2.jpeg" alt="Detalle de Marimba">
+                </div>
+                <div class="gallery-item">
+                    <img src="img4.jpg" alt="Interacción con el Público">
+                </div>
+                <div class="gallery-item video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/7oeLCOxE_Ww"YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+            </div>
+        </section>
+
+        <section id="repertorio">
+            <h2>Nuestro Vasto Repertorio</h2>
+            <div class="repertoire-list">
+                <div class="repertoire-item">
+                    <h3>Sones Tradicionales</h3>
+                    <p>Interpretaciones clásicas como **"Luna de Xelajú"**, "Ferrocarril de los Altos", "El Grito", y muchos más que evocan la esencia de Guatemala.</p>
+                </div>
+                <div class="repertoire-item">
+                    <h3>Cumbias y Bailables</h3>
+                    <p>Ponemos a bailar a tus invitados con ritmos contagiosos, cumbias populares y adaptaciones de éxitos modernos.</p>
+                </div>
+                <div class="repertoire-item">
+                    <h3>Boleros y Románticas</h3>
+                    <p>Melodías suaves y conmovedoras para crear un ambiente íntimo y elegante en cualquier ocasión.</p>
+                </div>
+                <div class="repertoire-item">
+                    <h3>Música Internacional y Adaptaciones</h3>
+                    <p>Desde melodías latinas hasta clásicos internacionales, podemos adaptar piezas a la versatilidad de la marimba para satisfacer tus gustos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="clientes">
+            <h2>Lo Que Dicen Nuestros Clientes</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-item">
+                    <p>"La Marimba Ritmo Chapín fue la joya de nuestra boda. Su música creó una atmósfera mágica y nuestros invitados quedaron encantados."</p>
+                    <p class="author">- Sofía P. (Novia)</p>
+                </div>
+                <div class="testimonial-item">
+                    <p>"Para nuestro evento corporativo, buscábamos algo único y cultural. Marimba Ritmo Chapín superó nuestras expectativas, un servicio impecable y un talento admirable."</p>
+                    <p class="author">- Gerencia, Tech Solutions S.A.</p>
+                </div>
+                <div class="testimonial-item">
+                    <p>"Cada vez que los contratamos para una fiesta familiar, la diversión está asegurada. Son el alma de la fiesta y su alegría es contagiosa."</p>
+                    <p class="author">- Familia García</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto">
+            <h2>Contáctanos y Solicita una Cotización</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Información de Contacto</h3>
+                    <p><strong>Teléfono:</strong> <a href="tel:+50212345678">(+502) 1234-5678</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:info@marimbaritmochapin.com">info@marimbaritmochapin.com</a></p>
+                    <p><strong>Horario de Oficina:</strong> Lunes a Viernes, 9:00 AM - 5:00 PM</p>
+                    <p><strong>Ubicación:</strong> Ciudad de Guatemala, Guatemala</p>
+                    <p>Síguenos en nuestras redes sociales:</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/tumarimba" target="_blank" aria-label="Facebook"><img src="https://img.icons8.com/ios-filled/50/A0522D/facebook-new.png" alt="Facebook" style="width: 30px; height: 30px;"></a>
+                        <a href="https://www.instagram.com/tumarimba" target="_blank" aria-label="Instagram"><img src="https://img.icons8.com/ios-filled/50/A0522D/instagram-new.png" alt="Instagram" style="width: 30px; height: 30px;"></a>
+                        <a href="https://www.youtube.com/tumarimba" target="_blank" aria-label="YouTube"><img src="https://img.icons8.com/ios-filled/50/A0522D/youtube-play--v1.png" alt="YouTube" style="width: 30px; height: 30px;"></a>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <h3>Formulario de Solicitud</h3>
+                    <form id="cotizacionForm">
+                        <label for="nombre">Nombre Completo:</label>
+                        <input type="text" id="nombre" name="nombre" required>
+
+                        <label for="email">Correo Electrónico:</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <label for="telefono">Número de Teléfono (Opcional):</label>
+                        <input type="tel" id="telefono" name="telefono">
+
+                        <label for="pais">País:</label>
+                        <select id="pais" name="pais" required>
+                            <option value="">Selecciona tu país</option>
+                            <option value="Guatemala">Guatemala</option>
+                            <option value="Mexico">México</option>
+                            <option value="Estados Unidos">Estados Unidos</option>
+                            <option value="Canada">Canadá</option>
+                            <option value="El Salvador">El Salvador</option>
+                            <option value="Honduras">Honduras</option>
+                            <option value="Nicaragua">Nicaragua</option>
+                            <option value="Costa Rica">Costa Rica</option>
+                            <option value="Panama">Panamá</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+
+                        <label for="pasatiempos">¿Cuáles son tus pasatiempos o intereses musicales?</label>
+                        <textarea id="pasatiempos" name="pasatiempos" rows="3"></textarea>
+
+                        <label for="tipoEvento">Tipo de Evento:</label>
+                        <select id="tipoEvento" name="tipoEvento" required>
+                            <option value="">Selecciona el tipo de evento</option>
+                            <option value="Boda">Boda</option>
+                            <option value="Evento Corporativo">Evento Corporativo</option>
+                            <option value="Fiesta Privada">Fiesta Privada</option>
+                            <option value="Celebracion Cultural">Celebración Cultural</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+
+                        <label for="fechaEvento">Fecha Tentativa del Evento:</label>
+                        <input type="date" id="fechaEvento" name="fechaEvento">
+
+                        <label for="comentarios">Comentarios o Requerimientos Especiales:</label>
+                        <textarea id="comentarios" name="comentarios" rows="5"></textarea>
+
+                        <button type="submit">Enviar Solicitud de Cotización</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="external-links">
+            <a href="https://www.inguat.gob.gt/" target="_blank">Descubre la Riqueza Cultural de Guatemala</a>
+            <a href="https://es.wikipedia.org/wiki/Marimba" target="_blank">Aprende Más sobre la Fascinante Historia de la Marimba</a>
+        </div>
+        <p>&copy; 2024 Marimba Ritmo Chapín. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // JavaScript para la funcionalidad de desplazamiento suave
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // JavaScript para manejar el envío del formulario (ejemplo simple)
+        document.getElementById('cotizacionForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita el envío real del formulario
+
+            // Recolectar datos del formulario
+            const formData = {
+                nombre: document.getElementById('nombre').value,
+                email: document.getElementById('email').value,
+                telefono: document.getElementById('telefono').value,
+                pais: document.getElementById('pais').value,
+                pasatiempos: document.getElementById('pasatiempos').value,
+                tipoEvento: document.getElementById('tipoEvento').value,
+                fechaEvento: document.getElementById('fechaEvento').value,
+                comentarios: document.getElementById('comentarios').value
+            };
+
+            console.log('Datos del formulario:', formData);
+
+            // Aquí es donde en un proyecto real enviarías estos datos a un servidor
+            // usando Fetch API o XMLHttpRequest, por ejemplo:
+            /*
+            fetch('/api/cotizaciones', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('¡Gracias por tu solicitud! Nos pondremos en contacto contigo pronto.');
+                this.reset(); // Limpiar el formulario
+            })
+            .catch(error => {
+                console.error('Error al enviar la solicitud:', error);
+                alert('Hubo un error al enviar tu solicitud. Por favor, inténtalo de nuevo.');
+            });
+            */
+
+            // Para este ejemplo, solo mostraremos una alerta y limpiaremos el formulario
+            alert('¡Gracias por tu solicitud, ' + formData.nombre + '! Nos pondremos en contacto contigo pronto con tu cotización.');
+            this.reset(); // Limpiar el formulario después del envío simulado
+        });
+    </script>
+</body>
+</html>
